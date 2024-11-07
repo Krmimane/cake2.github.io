@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweet Shop</title>
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+</head>
+
+<body class="bg-pink-50 font-sans text-gray-800">
+<!-- Header -->
+  <header class="flex items-center py-4 px-6 bg-gray-100 md:shadow-lg ">
+    <a href="#" class="sm:hidden absolute right-8 mt-6 text-gray-700 hover:text-pink-600"><i class="fa-regular fa-bell"></i></a>  
+  <!-- Logo et nom de la marque -->
+  <div class="hidden sm:flex items-center space-x-2">
+      <img src="./image/logo.png" alt="Logo" class="h-10 w-10"> <!-- Remplacez par votre chemin d'image -->
+      <span class="text-2xl font-semibold text-pink-600">Sweetly <span class="text-gray-600">By You</span></span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="hidden sm:flex space-x-8 ml-4">
+      <a href="./homepage.html" class="text-gray-700 hover:text-pink-600 font-medium">Home</a>
+      <a href="#" class="text-gray-700 hover:text-pink-600 font-medium">Build Your Cake</a>
+      <a href="#" class="text-gray-700 hover:text-pink-600 font-medium">Contact</a>
+  </nav>
+
+  <!-- Icônes de notification, favoris, panier et profil -->
+  <div class="hidden sm:flex items-center space-x-6 bg-pink-100 py-2 px-4 rounded-full ml-auto">
+      <a href="#" class="text-gray-700 hover:text-pink-600"><i class="fa-regular fa-bell fa-lg"></i></a>
+      <a href="./Favorites.html" class="text-gray-700 hover:text-pink-600"><i class="fa-regular fa-heart fa-lg"></i></a>
+      <a href="./panier.html" class="text-gray-700 hover:text-pink-600"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+      <a href="#" class="text-gray-700 hover:text-pink-600"><i class="fa-regular fa-user fa-lg"></i></a>
+  </div>
+</header>
+
+<!-- Section des favoris -->
+<section id="favorites-content" class="container mx-auto mt-4 px-4">
+  <h2 class="text-2xl font-semibold text-pink-500 mb-4">Mes Favoris</h2>
+  <div id="favorite-cakes-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+</section>
+
+<footer>
+        <!-- Footer visible uniquement sur les écrans de bureau et plus grands (sm et au-delà) -->
+    <div class="hidden sm:block w-full bg-[url('footer.png')] bg-cover bg-center h-80 bg-no-repeat text-center text-gray-600 text-sm">
+      
+          <p class="pt-52">© 2024 Sweetly By You</p>
+          
+          <nav class="flex justify-center space-x-4 mt-4">
+            <a href="./homepage.html" class="hover:text-pink-600">Home</a>
+            <a href="#" class="hover:text-pink-600">Personnalisation</a>
+            <a href="#" class="hover:text-pink-600">Contact</a>
+          </nav>
+          
+          <ul class="flex justify-center space-x-4 mt-4 list-none">
+            <li><a href="https://www.facebook.com" aria-label="Facebook"><i class="fab fa-facebook-square fa-2xl"></i></a></li>
+            <li><a href="https://www.twitter.com" aria-label="Twitter"><i class="fab fa-twitter-square fa-2xl"></i></a></li>
+            <li><a href="https://www.instagram.com" aria-label="Instagram"><i class="fab fa-instagram-square fa-2xl"></i></a></li>
+          </ul>
+        </div>
+    
+        <!-- Menu fixe en bas visible uniquement sur les écrans mobiles (taille inférieure à sm) -->
+        <div class="fixed bottom-0 left-0 right-0 pt-15 bg-black shadow-lg flex justify-around py-2 sm:hidden">
+          <a href="./homepage.html" class="text-white hover:text-pink-600"><i class="fa-solid fa-house fa-xl"></i></a>
+          <a href="./Favorites.html" class="text-white hover:text-pink-600"><i class="fa-regular fa-heart fa-xl"></i></a>
+          <a href="#" class="text-white hover:text-pink-600"><i class="fa-solid fa-plus fa-xl"></i></a>
+          <a href="./panier.html" class="text-white hover:text-pink-600"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
+          <a href="#" class="text-white hover:text-pink-600"><i class="fa-regular fa-user fa-xl"></i></a>
+          
+        </div>
+      </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const cakes = JSON.parse(localStorage.getItem("cakes")) || [];
+  const container = document.getElementById("favorite-cakes-container");
+
+  // Affiche les cakes favoris
+  const favoriteCakes = cakes.filter(cake => favorites.includes(cake.id));
+  favoriteCakes.forEach(cake => {
+    const cakeCard = document.createElement("div");
+    cakeCard.classList.add("cake-card", "bg-white", "rounded-lg", "shadow-lg", "relative", "overflow-hidden", "m-2");
+    cakeCard.setAttribute("data-id", cake.id);
+
+    cakeCard.innerHTML = `
+      <img src="${cake.image}" alt="${cake.name}" class="cake-image w-full h-48 object-cover rounded-t-lg">
+      <button class="absolute top-2 right-2 text-lg text-gray-800" onclick="event.stopPropagation(); toggleWishlist(this, ${cake.id})">
+        <i class="fa${favorites.includes(cake.id) ? 's' : 'r'} fa-heart heart-icon text-${favorites.includes(cake.id) ? 'red-500' : 'gray-400'}"></i>
+      </button>
+      <div class="p-4">
+        <h3 class="cake-name text-md font-semibold">${cake.name}</h3>
+        <p class="cake-price text-pink-500 font-bold">${cake.price} Dhs</p>
+      </div>
+    `;
+
+    container.appendChild(cakeCard);
+  });
+});
+
+// Met à jour les favoris et l'icône cœur
+function toggleWishlist(button, cakeId) {
+  const heart = button.querySelector('.heart-icon');
+  heart.classList.toggle('far'); // Outline heart
+  heart.classList.toggle('fas'); // Filled heart
+  heart.style.color = heart.classList.contains('fas') ? 'red' : 'gray';
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  if (heart.classList.contains('fas')) {
+    if (!favorites.includes(cakeId)) {
+      favorites.push(cakeId);
+    }
+  } else {
+    favorites = favorites.filter(id => id !== cakeId);
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+
+  // Met à jour le cœur sur la page d'accueil si elle est visible
+  const homeHeartIcon = document.querySelector(`.cake-card[data-id="${cakeId}"] .heart-icon`);
+  if (homeHeartIcon) {
+    homeHeartIcon.classList.toggle('far', !heart.classList.contains('fas'));
+    homeHeartIcon.classList.toggle('fas', heart.classList.contains('fas'));
+    homeHeartIcon.style.color = heart.classList.contains('fas') ? 'red' : 'gray';
+  }
+
+  // Retire la carte de favoris si désélectionnée
+  if (!heart.classList.contains('fas')) {
+    button.closest(".cake-card").remove();
+  }
+}
+</script>
+
+</body>
+</html>

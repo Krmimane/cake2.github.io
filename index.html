@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweety By You</title>
+   
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Trad:wght@100..400&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Trad:wght@100..400&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+	  body {
+  background-image: url('image 18.png'); 
+  background-repeat: repeat-x; /* Répétition horizontale */
+  background-size: auto 100%; /* Ajustement de la hauteur pour remplir */
+  background-position: top center; /* Position de l'image */
+  margin: 0; /* Enlever les marges */
+  font-family:"Plus Jakarta Sans"!important;
+}
+h1{
+   font-family: "Playwrite US Trad";
+   font-weight: 800;
+  
+}
+
+       .bg-pink-100 {
+    background-color: #ffe6e6;
+}
+
+.bg-brown-500 {
+    background-color: #6b3e26;
+}
+
+        /* Styles for Carousel and Cards */
+        .carousel-item {
+            width: 20%; /* Set width to 20% to show four items at once */
+            padding: 0.5rem;
+			
+        }
+
+        .carousel-item img {
+            height: 8.4rem; /* Adjust the image height */
+        }
+
+        .carousel-item h3 {
+            font-size: 0.75rem; /* Font size for title */
+        }
+
+        .carousel-item p {
+            font-size: 0.7rem; /* Font size for price */
+        }
+
+        .carousel-item button {
+            padding: 0.25rem 0.25rem; /* Button padding */
+            font-size: 0.5rem; /* Adjust font size of the button */
+			margin-right:1rem;
+        }
+		.CarousselWrapper
+		{
+		   padding-left:4rem;
+		   padding-right:4rem;
+		}
+		/* Text Styling */
+       .carousel-item-chef p {
+            font-size: 1rem;
+			font-weight:600;
+			width:45rem;
+            color: #6b7280; /* Tailwind's gray-600 color */
+            font-style: italic;
+            line-height: 1.6;
+         }
+		 /* Chef Image Styling */
+       .carousel-item-chef img {
+           height:15rem;
+		   width:15rem;
+         }
+    .navlp{
+     font-weight:600;
+	 font-size:1.1rem;
+}
+/* Styles de base pour masquer les inputs */
+.hidden {
+    display: none;
+}
+
+/* Styles des boutons */
+.toggle-button {
+    color: #4a5568; /* couleur grise */
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Styles pour le bouton actif */
+input#signIn:checked + label[for="signIn"],
+input#register:checked + label[for="register"] {
+    color: white;
+    background-color: #e91e63; /* même couleur de fond que Register */
+    border-radius: 0.25rem;
+}
+
+
+
+/* Styles pour le bouton inactif */
+input#signIn:not(:checked) + label[for="signIn"],
+input#register:not(:checked) + label[for="register"] {
+    background: none;
+}
+/* Styles pour le bouton inactif version mobile */
+input#signInToggle:not(:checked) + label[for="signInToggle"],
+input#registerToggle:not(:checked) + label[for="registerToggle"] {
+    background: none;
+}
+/* Styles pour le bouton actif version mobile */
+input#signInToggle:checked + label[for="signInToggle"],
+input#registerToggle:checked + label[for="registerToggle"] {
+    color: white;
+    background-color: #e91e63; /* même couleur de fond que Register */
+    border-radius: 0.25rem;
+}
+
+/* Slide-down effect on page load for image */
+.slide-down-image {
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: slideDown 1s ease-out forwards;
+}
+
+@keyframes slideDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 3D Button Effect */
+.btn-3d {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Cake Image Hover Effect */
+.cake-img:hover {
+    transform: scale(1.05) rotate(3deg);
+}
+.cakecard
+{
+   transition: transform 0.3s ease;
+}
+.cakecard:hover {
+  transform: scale(1.05); /* Ajustez la valeur pour agrandir plus ou moins */
+  border-radius :10px;
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  
+}
+
+.section-title h2 {
+  margin: 0 15px;
+  font-size: 30px;
+  font-family: "Playwrite US Trad"; 
+  font-weight :800;
+}
+
+.section-title .line {
+  flex-grow: 1;
+  height: 3px;
+  background-color: black;
+}
+@media (max-width: 767px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+.mobile-slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: '#f1afd2';
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 98%;
+  padding:10px;
+  max-width: 320px;
+  height:35rem;/* A modofier si necessaire !!!!*/ 
+  margin: 0 auto;
+}
+
+.mobile-slider {
+  display: flex;
+  overflow: hidden;
+}
+
+.mobile-slide {
+  width:15re;
+  text-align: center;
+  display: none;
+  flex-shrink: 0;
+  padding: 10px;
+}
+
+.mobile-slide.active {
+  display: block;
+}
+
+.mobile-slider .content {
+  margin: 10px 0;
+}
+
+.mobile-slider .image-container img {
+  width:15rem;
+  height: 16rem;
+  border-radius: 10px;
+  margin:10px;
+}
+
+.mobile-slider h2 {
+  color: #ff5484;
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.mobile-slider p {
+  color: #7c7c7c;
+  font-size: 20px;
+  width:18rem;
+}
+
+.mobile-slider-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.mobile-slider-controls button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #ff5484;
+  cursor: pointer;
+}
+
+.mobile-indicators {
+  display: flex;
+  gap: 5px;
+}
+
+.mobile-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+}
+
+.mobile-dot.active {
+  background-color: #ff5484;
+}
+
+.background-wave {
+  background: linear-gradient(to bottom right, #fde2e4, #fadadd, #fff1f2);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  height: 50vh;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.background-wave-bottom {
+  background: linear-gradient(to top left, #fde2e4, #fadadd, #fff1f2);
+  clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+  height: 50vh;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+
+
+
+   
+    </style>
+</head>
+<body class="bg-pink-50 font-sans" >
+
+    <!-- Navbar -->
+    <nav class=" shadow-lg md:block hide-on-mobile"  >
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="./image/logo.png" alt="Logo" class="w-12 h-12">
+                <span class="text-pink-500 font-bold text-2xl">Sweety <span class="text-pink-700">By You</span></span>
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="#home" class="text-gray-600 hover:text-pink-500 navlp">Home</a></li>
+                <li><a href="#services" class="text-gray-600 hover:text-pink-500 navlp">Services</a></li>
+                <li><a href="#contact" class="text-gray-600 hover:text-pink-500 navlp">Contact</a></li>
+            </ul>
+  
+          
+            <div class="flex space-x-4 navlp">
+              <!-- Sign In Toggle Button -->
+              <input type="radio" id="signIn" name="toggle" class="hidden" checked>
+              <label for="signIn" id="signInButton" class="toggle-button transition duration-200 cursor-pointer">Sign In</label>
+             <!-- Register Toggle Button -->
+             <input type="radio" id="register" name="toggle" class="hidden">
+             <label for="register" id="registerButton" class="toggle-button transition duration-200 cursor-pointer" >Register</label>
+          </div>
+
+          
+
+        </div>
+    </nav>
+
+ <!-- Hero Section -->
+<section class="p-12 md:block hide-on-mobile" id="home">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-2">
+        <!-- Text Content -->
+        <div class="md:w-1/2 text-center md:text-left" style="display:flex;flex-direction:column;gap:15px; margin-left:4.5rem;">
+            <h1 class="text-5xl font-extrabold text-pink-700 leading-tight">
+                Sweety <span class="text-pink-500">By You</span>
+            </h1>
+            <p class="text-gray-700 mt-4 text-lg md:text-xl max-w-lg" style="font-size:1.7rem; line-height:1.4;font-weight:600;">
+                Explore our app to browse stunning cakes or easily design and order your own customized creation. Choose from pre-made options or personalize every detail to make the perfect cake!
+            </p>
+            <div class="mt-6 flex flex-col md:flex-row gap-4 justify-center md:justify-start">
+                <button id="signInButton"  class="btn-3d bg-pink-500 text-white px-6 py-3 rounded-lg hover:bg-pink-600 transition duration-300" style="font-weight:700;" onclick="openModal()">
+                    Bake your Vision
+                </button>
+
+                <button id="signInButton" class="btn-3d bg-white text-pink-500 border border-pink-500 px-6 py-3 rounded-lg hover:bg-pink-50 transition duration-300" style="font-weight:700;" onclick="openModal()">
+                    Pre-made Perfection
+                </button>
+            </div>
+        </div>
+        <!-- Image Content -->
+        <img src="./image/cakemain.png" alt="Cake" class="cake-img slide-down-image w-3/4 md:w-full" style="width:25rem; height:28rem;">
+    </div>
+</section>
+
+
+<!-- Services Section --> 
+    <section class="py-5 md:block hide-on-mobile" id="services">
+        <div class="container mx-auto text-center">
+		    <div class="section-title">
+		    <span class="line"></span>
+            <h2 class="text-3xl font-bold text-black-700">Services</h2>
+			 <span class="line"></span>
+			 </div>
+            <p class="text-gray-600 mt-4" style="font-size:1.5rem;">At Sweety By You, you can either select from our carefully crafted ready-made cakes for any occasion or customize your own cake by choosing every detail. Our expert chefs will bring your personalized vision to life, ensuring each cake is unique and delicious. Whether you’re in need of a quick treat or something truly special, we’ve got the perfect solution for you!</p>
+        </div>
+	</section>
+
+   <!-- Services Section --> 
+<section class="py-2 md:block hide-on-mobile" id="CustomizeSection">
+    <div class="container mx-auto">
+	  <div class="section-title">
+                  <h2 class="text-3xl font-bold text-black-700 mt-0">Customize Your Cake</h2>
+			     <span class="line"></span>
+			    </div>
+        <div class="flex flex-col md:flex-row items-center justify-between ml-5 " >
+            <div class="text-left md:w-1/2 flex flex-col gap-8">            
+                <p class="text-gray-700 mb-6" style="font-size:1.5rem;width:35rem;" >
+                    Bring your ideas to life with our easy cake customization tool. Choose your favorite flavors, fillings, and decorations, and watch your cake come to life with a real-time preview. Create the perfect cake for any occasion—exactly how you want it!
+                </p>
+                <button id="signInButton" onclick="openModal()" class="bg-brown-500 text-white px-6 py-2 rounded-lg btn-3d transition duration-300 p-5" style="background-color: #6b3e26;font-weight:700;width:18rem;">
+                    Start designing now!
+                </button>
+            </div>
+			
+            <div style="position: relative;">
+              <img src="./image/cakecustom.png" alt="Cake" class="w-64 h-auto md:w-80" style="width: 17rem; height: 25rem;margin-right:12rem;">
+              <img src="./image/recapcustomize.png" alt="Cake" class="w-64 h-auto md:w-80 z-40" style="width: 8rem; height: 15rem; position: absolute; top: 10px; right: 110px;">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="md:block hide-on-mobile"> 
+    <div class="container mx-auto text-center ">
+	           <div class="section-title">
+                  <h2 class="text-3xl font-bold text-black-700">Best Sold Cakes</h2>
+			     <span class="line"></span>
+			    </div>
+        <div class="relative mt-6 overflow-hidden">
+            <!-- Carousel Wrapper -->
+            <div id="carousel" class="flex transition-transform duration-500 CarousselWrapper" style="gap: 5rem;height:20rem;padding-top:20px;padding-bottom:20px;">
+                <!-- Cake Items -->
+                <div class="carousel-item bg-white shadow-lg rounded-lg p-2 flex-shrink-0 flex flex-col items-center justify-center cakecard" style="gap: 0.3rem;">
+                    <img src="./image/Group 1000002590.png" alt="Berry Bliss Delight Cake" class="w-30 object-cover rounded-lg">
+                    <h3 style="font-size:1rem;" class="text-xs font-semibold text-gray-700 mt-1">Violet Cake</h3>
+                    <p style="font-size:1rem;" class="text-gray-500 font-medium text-xs">599.99 dhs </p>
+                    <button id="signInButton" onclick="openModal()" style="background-color: #664242; padding: 10px 10px; font-size: 0.8rem;font-weight:700;" class="text-white rounded-md mt-4 ml-2">Order Now</button>
+
+
+                </div>
+                <div class="carousel-item bg-white shadow-lg rounded-lg p-2 flex-shrink-0 flex flex-col items-center justify-center cakecard" style="gap: 0.3rem;">
+                    <img src="./image/image 46.png" alt="Cake" class="w-30 h-20 object-cover rounded-md">
+                    <h3 style="font-size:1rem;" class="text-xs font-semibold text-gray-700 mt-1">Vanilla-Strawberry Cake</h3>
+                    <p  style="font-size:1rem;" class="text-gray-500 font-medium text-xs">759.99 DHS</p>
+                       <button id="signInButton" onclick="openModal()" style="background-color: #664242; padding: 10px 10px; font-size: 0.8rem;font-weight:700;" class="text-white rounded-md mt-4 ml-2">Order Now</button>
+
+                </div>
+                <div class="carousel-item bg-white shadow-lg rounded-lg p-2 flex-shrink-0 flex flex-col items-center justify-center cakecard" style="gap: 0.3rem;">
+                    <img src="./image/image 45.png" alt="Caramel Crunch Delight" class="w-30  object-cover rounded-md">
+                    <h3 style="font-size:1rem;"  class="text-xs font-semibold text-gray-700 mt-1">Red velvet  Cake</h3>
+                    <p  style="font-size:1rem;" class="text-gray-500 font-medium text-xs">899.99 DHS</p>
+                      <button  id="signInButton" onclick="openModal()" style="background-color: #664242; padding: 10px 10px; font-size: 0.8rem;font-weight:700;" class="text-white rounded-md mt-4 ml-2" >Order Now</button>
+                </div>
+                <div class="carousel-item bg-white shadow-lg rounded-lg p-2 flex-shrink-0 flex flex-col items-center justify-center cakecard" style="gap: 0.3rem;">
+                    <img src="./image/Group 1000002591.png" alt="Vanilla Velvet Cake" class="w-30 h-20 object-cover rounded-md">
+                    <h3  style="font-size:1rem;" class="text-xs font-semibold text-gray-700 mt-1">Berry Bliss Delight Cake</h3>
+                    <p style="font-size:1rem;" class="text-gray-500 font-medium text-xs">549.99 DHS</p>
+                      <button id="signInButton" onclick="openModal()" style="background-color: #664242; padding: 10px 10px; font-size: 0.8rem;font-weight:700;" class="text-white rounded-md mt-4 ml-2" >Order Now</button>
+                </div>
+				 <!-- Cake Items 2-->
+                <div class="carousel-item bg-white shadow-lg rounded-lg p-2 ml-10 flex-shrink-0 flex flex-col items-center justify-center cakecard" style="gap: 0.3rem;">
+                    <img src="./image/image 48.png" alt="Berry Bliss Delight Cake" class="w-30 h-20 object-cover rounded-md">
+                    <h3 class="text-xs font-semibold text-gray-700 mt-1" >Black forest Cake</h3>
+                    <p style="font-size:1rem;" class="text-gray-500 font-medium text-xs">499.99  DHS</p>
+                       <button id="signInButton" onclick="openModal()" style="background-color: #664242; padding: 10px 10px; font-size: 0.8rem;font-weight:700;" class="text-white rounded-md mt-4 ml-2" >Order Now</button>
+                </div>
+                <div class="carousel-item bg-white shadow-lg rounded-lg p-2  flex-shrink-0 flex flex-col items-center justify-center cakecard" style="gap: 0.3rem;">
+                    <img src="./image/image (3).png" alt="Chocolate Dream Cake" class="w-30 h-20 object-cover rounded-md">
+                    <h3 style="font-size:1rem;"  class="text-xs font-semibold text-gray-700 mt-1">Strawberry cheese cake </h3>
+                    <p  style="font-size:1rem;" class="text-gray-500 font-medium text-xs">499.99 DHS</p>
+                       <button id="signInButton" onclick="openModal()"  style="background-color: #664242; padding: 10px 10px; font-size: 0.8rem;font-weight:700;" class="text-white rounded-md mt-4 ml-2" >Order Now</button>
+                </div>
+                <div class="carousel-item bg-white shadow-lg rounded-lg p-2  flex-shrink-0 flex flex-col items-center justify-center cakecard" style="gap: 0.3rem;">
+                    <img src="./image/image 47.jpg" alt="Caramel Crunch Delight" class="w-35 mb-0 object-cover rounded-md">
+                    <h3  style="font-size:1rem;" class="text-xs font-semibold text-gray-700 mt-1"> Pastel magic Birthday cake </h3>
+                    <p style="font-size:1rem;"  class="text-gray-500 font-medium text-xs">449.99 DHS</p>
+                       <button id="signInButton" onclick="openModal()" style="background-color: #664242; padding: 10px 10px; font-size: 0.8rem;font-weight:700;" class="text-white rounded-md mt-4 ml-2" >Order Now</button>
+                </div>
+                <div class="carousel-item bg-white shadow-lg rounded-lg p-2 flex-shrink-0 flex flex-col items-center justify-center cakecard" style="gap: 0.3rem;">
+                    <img src="./image/Group 1000002586.png" alt="Vanilla Velvet Cake" class="w-30 h-20 object-cover rounded-md">
+                    <h3 style="font-size:1rem;" class="text-xs font-semibold text-gray-700 mt-1">Dark chocolate Cake</h3>
+                    <p style="font-size:1rem;" class="text-gray-500 font-medium text-xs">379.99 DHS</p>
+                     <button id="signInButton" onclick="openModal()"  style="background-color: #664242; padding: 10px 10px; font-size: 0.8rem;font-weight:700;" class="text-white rounded-md mt-4 ml-2" >Order Now</button>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button onclick="prevSlide()" class="absolute left-4 top-1/2 transform -translate-y-1/2  text-black rounded-full p-2 z-10"><img src="./image/left-arrow.png" alt="leftarrow" style="height:1rem;width:1rem;"></button>
+            <button onclick="nextSlide()" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-black rounded-full p-2 z-10"><img src="./image/right-arrow.png" alt="rightarrow" style="height:1rem;width:1rem;"></button>
+        </div>
+    </div>
+</section>
+
+
+  <!-- Meet the Chefs Section -->
+<section class="py-16 md:block hide-on-mobile">
+    <div class="container mx-auto text-center">
+	      <div class="section-title">
+		    <span class="line"></span>
+             <h2 class="text-3xl font-bold text-black-700">Meet the Chefs</h2>
+			 <span class="line"></span>
+		</div>
+       
+        <div class="relative overflow-hidden ">
+            <div id="chefCarousel" class="flex transition-transform duration-500" style="margin-left:4rem;margin-right:4rem;">
+                <!-- Chef 1 -->
+                <div  class="carousel-item-chef flex flex-col sm:flex-row items-center w-full flex-shrink-0 text-center sm:text-left" style="margin-right:5rem;">
+				  <img src="./image/ch.jpeg" alt="Chef" class="w-40 h-40 rounded-full sm:w-48 sm:h-48">
+                    
+                    <div class="ml-4 sm:ml-8 mt-4 sm:mt-0">
+                        <p class="text-gray-600 italic mb-4">"I love pushing the boundaries of traditional cake-making. Whether it's experimenting with unique flavor combinations or incorporating cutting-edge designs, my goal is to bring something fresh and exciting to every custom cake I create. There's nothing more satisfying than seeing a customer’s face light up when they see their dream cake made real."</p>
+                        <h4  class="text-lg font-semibold text-gray-700">Chef Meryem Tahiri</h4>
+                    </div>
+                </div>
+                <!-- Chef 2 -->
+                <div  class="carousel-item-chef flex flex-col sm:flex-row items-center w-full flex-shrink-0 text-center sm:text-left">
+				 <img src="./image/chefpatiss2.jpeg" alt="Chef" class="w-24 h-24 rounded-full">
+                    <div class="ml-4 sm:ml-8 mt-4 sm:mt-0">
+                       <p class="text-gray-600 italic">"For me, cake decorating is an art form. Each cake is crafted with care, combining unique flavors and intricate details to bring joy to celebrations of all kinds."</p>
+                        <h4 class="text-lg font-semibold text-gray-700 ml-4">Chef Zumuruda </h4>
+                    </div>
+                </div>
+                <!-- Chef 3 -->
+                <div  class="carousel-item-chef flex flex-col sm:flex-row items-center w-full flex-shrink-0 text-center sm:text-left">
+				    <img src="./image/cheff.jpeg" alt="Chef" class="w-24 h-24 rounded-full">
+                    <div class="ml-4 sm:ml-8 mt-4 sm:mt-0">
+					    <p class="text-gray-600 italic">"Creating cakes that bring a smile is my passion. I love blending seasonal ingredients with creative designs, aiming to make every cake a delicious memory for my clients."</p>
+                        <h4 class="text-lg font-semibold text-gray-700 ml-4">Chef Robert Martin</h4>
+                    </div>
+                </div>
+				 <!-- Chef 4 -->
+                <div  class="carousel-item-chef flex flex-col sm:flex-row items-center w-full flex-shrink-0 text-center sm:text-left">
+				    <img src="./image/chef4.jpeg" alt="Chef" class="w-24 h-24 rounded-full">
+                    <div class="ml-4 sm:ml-8 mt-4 sm:mt-0">
+					    <p class="text-gray-600 italic">"From classic to contemporary, I strive to make every cake as unique as the person it's for. There’s magic in transforming simple ingredients into a sweet masterpiece that delights everyone."</p>
+                        <h4 class="text-lg font-semibold text-gray-700 ml-4">Chef Alexnder Perue</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ <!-- Section Services - Version Mobile -->
+    <section id="services-mobile" class="md:hidden" style="padding-top:4rem">
+        <div class="mobile-slider-container bg-pink-50">
+  <div class="mobile-slider">
+    <!-- Service Slide 1 -->
+    <div class="mobile-slide active">
+      <div class="content">
+        <div class="image-container">
+          <img src="./image/image 46.png" alt="Service 1">
+        </div>
+        <h2>Ready-Made Cakes</h2>
+        <p>Select from our carefully crafted cakes, perfect for any occasion. Quick, easy, and delicious!</p>
+      </div>
+    </div>
+
+    <!-- Service Slide 2 -->
+    <div class="mobile-slide">
+      <div class="content">
+        <div class="image-container">
+          <img src="./image/service2.png" alt="Service 2">
+        </div>
+        <h2>Customize Your Cake</h2>
+        <p>Design your own cake by choosing every detail. Our expert chefs will bring your vision to life!</p>
+      </div>
+    </div>
+	<!-- Service Slide 3-->
+    <div class="mobile-slide">
+      <div class="content">
+        <div class="image-container">
+          <img src="./image/i.png" alt="Service 3">
+        </div>
+        <h2>Get the Full Experience!</h2>
+        <p>Download our app for exclusive offers, faster orders. Customize and order cakes anytime, anywhere !</p>
+      </div>
+    </div>
+
+    <!-- Add more slides as needed -->
+  </div>
+
+  <!-- Navigation Controls -->
+  <div class="mobile-slider-controls">
+    <button class="mobile-prev">Skip</button>
+    <div class="mobile-indicators">
+      <span class="mobile-dot active"></span>
+      <span class="mobile-dot"></span>
+      <span class="mobile-dot"></span>
+    </div>
+    <button class="mobile-next">Next</button>
+  </div>
+</div>
+<div class="flex flex-row justify-center space-x-4  navlp " style="margin:3.5rem;font-size:1.3rem" >
+              <!-- Sign In Toggle Button -->
+              <input type="radio" id="signInToggle" name="toggle" class="hidden" checked>
+              <label for="signInToggle" id="signInMobileversButton" class="toggle-button transition duration-200 cursor-pointer">Sign In</label>
+             <!-- Register Toggle Button -->
+             <input type="radio" id="registerToggle" name="toggle" class="hidden">
+             <label for="registerToggle" id="registerMobileversButton" class="toggle-button transition duration-200 cursor-pointer" >Register</label>
+          </div>
+
+    </section>
+
+    
+
+ <!-- Login Button -->
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-20">
+    <div class="bg-white p-8 rounded-xl shadow-lg max-w-sm w-full relative mx-4">
+        <!-- Close Button -->
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+
+        <!-- Heading -->
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-pink-500">Welcome Back!</h2>
+            <p class="text-pink-400 mt-2">Log in to continue exploring our delicious creations</p>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <!-- Email Field -->
+            <label for="email" class="block text-sm font-semibold text-gray-600 mb-1">Email</label>
+            <input type="email" id="email" required class="border border-pink-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 p-3 w-full rounded-lg mb-4 text-gray-700 placeholder-gray-400" placeholder="Enter your email">
+
+            <!-- Password Field -->
+            <label for="password" class="block text-sm font-semibold text-gray-600 mb-1">Password</label>
+            <input type="password" id="password" required class="border border-pink-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 p-3 w-full rounded-lg mb-6 text-gray-700 placeholder-gray-400" placeholder="Enter your password">
+
+            <!-- Login Button -->
+            <button type="submit" class="w-full py-3 bg-pink-500 text-white rounded-lg font-semibold hover:bg-pink-600 transition duration-200"  >Log In</button>
+        </form>
+
+        <!-- Sign-Up Link -->
+        <div class="text-center mt-6">
+          <p class="text-pink-500">Don't have an account? 
+            <a href="#" onclick="switchToSignUpModal()" class="text-pink-600 font-semibold hover:underline">Sign up</a>
+        </p>
+        </div>
+    </div>
+</div>
+
+
+  
+<!-- Popup d'inscription -->
+<div id="popup" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-20   ">
+  <div class="popup-content bg-white p-8 rounded-xl shadow-lg max-w-sm w-full relative mx-4">
+    <span class="close-button text-2xl cursor-pointer text-gray-500 hover:text-gray-800 absolute top-4 right-4" onclick="closeSignUpPopup()">×</span>
+    <h2 class="text-3xl font-bold text-center text-pink-500 mb-6">Create an Account</h2>
+    <form id="signUpForm">
+      <label for="username" class="block text-sm font-semibold text-gray-600 mb-1">Username</label>
+      <input type="text" id="username" name="username" required class="border border-pink-300 p-3 w-full rounded-lg mb-4" placeholder="Choose a username">
+      <label for="email" class="block text-sm font-semibold text-gray-600 mb-1">Email</label>
+      <input type="email" id="email" name="email" required class="border border-pink-300 p-3 w-full rounded-lg mb-4" placeholder="Enter your email">
+      <label for="password" class="block text-sm font-semibold text-gray-600 mb-1">Password</label>
+      <input type="password" id="password" name="password" required class="border border-pink-300 p-3 w-full rounded-lg mb-6" placeholder="Create a password">
+      <button type="submit" class="w-full py-3 bg-pink-500 text-white rounded-lg">Register</button>
+    </form>
+  </div>
+</div>
+
+<!-- Popup de confirmation d'inscription réussie -->
+<div id="successPopup" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-20">
+  <div class="popup-content bg-white p-8 rounded-xl shadow-lg max-w-sm w-full relative mx-4">
+    <span class="close-button text-2xl cursor-pointer text-gray-500 hover:text-gray-800 absolute top-4 right-4" onclick="closeSuccessPopup()">×</span>
+    <h2 class="text-3xl font-bold text-center text-pink-500 mb-6">You are successfully registered!</h2>
+    <p class="text-center text-gray-600 mb-6">You will be redirected shortly.</p>
+    <div class="text-center">
+      <button class="py-2 px-4 bg-pink-300 text-white rounded-lg" onclick="redirectToHomePage()">Go to Home Page</button>
+    </div>
+  </div>
+</div>
+
+  
+  
+	<footer class="py-6 mt-0 md:block hide-on-mobile" id="contact">
+    
+    <div class="text-center text-gray-600 text-sm">
+      <p class="pt-0">© 2024 Sweetly By You</p>
+      
+      <nav class="flex justify-center space-x-4 mt-4">
+        <a href="#" class="hover:text-pink-600">Home</a>
+        <a href="#" class="hover:text-pink-600">Personnalisation</a>
+        <a href="#" class="hover:text-pink-600">Contact</a>
+      </nav>
+      
+      <ul class="flex justify-center space-x-4 mt-4 list-none">
+    <li><a href="https://www.facebook.com"  target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-square fa-2xl"></i></a></li>
+    <li><a href="https://www.twitter.com"  target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square fa-2xl"></i></a></li>
+    <li><a href="https://www.instagram.com"  target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram-square fa-2xl"></i></a></li>
+  </ul>
+
+    </div>
+
+    <!-- Menu fixe en bas visible uniquement sur les écrans mobiles (taille inférieure à sm) -->
+    <div class="fixed bottom-0 left-0 right-0 pt-15 bg-black shadow-lg flex justify-around py-2 sm:hidden">
+      <a href="#" class="text-white hover:text-pink-600"><i class="fa-solid fa-house fa-xl"></i></a>
+      <a href="#" class="text-white hover:text-pink-600"><i class="fa-regular fa-heart fa-xl"></i></a>
+      <a href="#" class="text-white hover:text-pink-600"><i class="fa-solid fa-plus fa-xl"></i></a>
+      <a href="#" class="text-white hover:text-pink-600"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
+      <a href="#" class="text-white hover:text-pink-600"><i class="fa-regular fa-user fa-xl"></i></a>
+    </div>
+  </footer>
+
+  <script>
+  let currentIndex = 0;
+const itemsPerSlide = 4;
+
+function nextSlide() {
+    const carousel = document.getElementById('carousel');
+    const totalItems = document.querySelectorAll('.carousel-item').length;
+    const maxIndex = Math.ceil(totalItems / itemsPerSlide) - 1;
+
+    if (currentIndex < maxIndex) {
+        currentIndex++;
+    } else {
+        currentIndex = 0; // Retour au début
+    }
+
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`; // Défiler de 100% pour chaque slide
+}
+
+function prevSlide() {
+    const carousel = document.getElementById('carousel');
+    const totalItems = document.querySelectorAll('.carousel-item').length;
+    const maxIndex = Math.ceil(totalItems / itemsPerSlide) - 1;
+
+    if (currentIndex > 0) {
+        currentIndex--;
+    } else {
+        currentIndex = maxIndex; // Aller à la fin
+    }
+
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`; // Défiler de 100% pour chaque slide
+}
+ 
+// Function to open Login Modal
+function openLoginModal() {
+  document.getElementById('loginModal').classList.remove('hidden');
+}
+
+// Function to open Sign-Up Modal
+function openSignUpModal() {
+  document.getElementById('popup').classList.remove('hidden');
+}
+
+// Function to close the current modal
+function closeModal() {
+  document.getElementById('loginModal').classList.add('hidden');
+  document.getElementById('popup').classList.add('hidden');
+}
+
+// Function to switch from Login Modal to Sign-Up Modal
+function switchToSignUpModal() {
+  closeModal(); // Close the Login Modal
+  openSignUpModal(); // Open the Sign-Up Modal
+}
+
+
+</script>
+
+
+	<!-- JavaScript pour le défilement automatique des chefs -->
+<script>
+    let chefIndex = 0;
+
+    function showChefSlide(index) {
+        const chefCarousel = document.getElementById('chefCarousel');
+        const totalChefs = document.querySelectorAll('#chefCarousel .carousel-item-chef').length;
+
+        chefCarousel.style.transform = `translateX(-${index * 100}%)`;
+        chefIndex = (index + 1) % totalChefs; // Boucle au début après le dernier chef
+    }
+
+    function startAutoSlide() {
+        showChefSlide(chefIndex);
+        setInterval(() => {
+            showChefSlide(chefIndex);
+        }, 3000); // Change de chef toutes les 3 secondes
+    }
+
+    // Lancer le défilement automatique lorsque la page est chargée
+    window.onload = startAutoSlide;
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  let currentIndex = 0;
+  const slides = document.querySelectorAll(".mobile-slider .mobile-slide");
+  const dots = document.querySelectorAll(".mobile-dot");
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+      dots[i].classList.toggle("active", i === index);
+    });
+  }
+
+  document.querySelector(".mobile-next").addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  });
+
+  document.querySelector(".mobile-prev").addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  });
+
+  showSlide(currentIndex); // Initialize the first slide as active
+});
+
+
+
+function openSignUpPopup() {
+  document.getElementById('popup').classList.remove('hidden');
+}
+
+// Fermer la popup d'inscription
+function closeSignUpPopup() {
+  document.getElementById('popup').classList.add('hidden');
+}
+
+// Add an event listener to the Register button to open the pop-up
+document.getElementById("registerButton").addEventListener("click", function(event) {
+  openSignUpModal(); // Open the modal
+});
+
+// Add an event listener to the Register button for movile version  to open the pop-up
+document.getElementById("registerMobileversButton").addEventListener("click", function(event) {
+  openSignUpModal(); // Open the modal
+});
+
+
+
+  function openModal() {
+      document.getElementById("loginModal").classList.remove("hidden");
+  }
+
+  function closeModal() {
+      document.getElementById("loginModal").classList.add("hidden");
+  }
+
+  // Event listener for the Sign In label
+  document.getElementById("signInButton").addEventListener("click", function(event) {
+      openModal(); // Open the login modal
+  });
+  // Event listener for the Sign In label version mobile 
+  document.getElementById("signInMobileversButton").addEventListener("click", function(event) {
+      openModal(); // Open the login modal
+  });
+  function openSuccessPopup() {
+  document.getElementById('successPopup').classList.remove('hidden');
+}
+
+// Fermer la popup de confirmation
+function closeSuccessPopup() {
+  document.getElementById('successPopup').classList.add('hidden');
+}
+
+
+function redirectToHomePage() {
+  window.location.href = './homepage.html';  // Remplacez '/home' par l'URL de votre page
+}
+
+// Gérer le processus d'inscription
+document.getElementById("signUpForm").addEventListener("submit", function(event) {
+  event.preventDefault();  // Empêcher l'envoi du formulaire
+
+  // Vous pouvez ici ajouter une validation ou appeler une API pour enregistrer l'utilisateur
+
+  // Après l'inscription réussie (simulée ici) :
+  closeSignUpPopup();  // Fermer la popup d'inscription
+  openSuccessPopup();  // Ouvrir la popup de confirmation
+});
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    window.location.href = './homepage.html'; 
+    
+});
+</script>
+
+</body>
+</html>

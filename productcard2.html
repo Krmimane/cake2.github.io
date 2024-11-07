@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Page with Size Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+  
+  <style>
+    .size-button {
+      padding: 0.5rem 1.25rem;
+      font-weight: 600;
+      background-color: #f9fafb; /* Fond gris clair */
+      color: #4b5563; /* Gris foncé pour le texte */
+      border: 2px solid transparent; /* Pas de bordure par défaut */
+      border-radius: 0.375rem; /* Bordures arrondies */
+      transition: all 0.3s ease;
+    }
+    
+    /* Effet de survol */
+    .size-button:hover {
+      background-color: #f3f4f6; /* Gris plus foncé au survol */
+      border-color: #d1d5db; /* Bordure grise au survol */
+    }
+    
+    /* Bouton actif (sélectionné) */
+    .size-button.active {
+      background-color: #f9a8d4; /* Fond rose clair */
+      color: #fff; /* Texte blanc */
+      border-color: #f472b6; /* Bordure rose */
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Header -->
+  <header class="flex items-center py-4 px-6 bg-gray-100 md:shadow-lg ">
+      <a href="homepage.html" class="sm:hidden absolute left-8 mt-6 text-gray-700 hover:text-pink-600"><i class="fa-solid fa-chevron-left"></i></a>
+      <a href="#" class="sm:hidden absolute right-8 mt-6 text-gray-700 hover:text-pink-600"><i class="fa-regular fa-bell"></i></a>  
+    <!-- Logo et nom de la marque -->
+    <div class="hidden sm:flex items-center space-x-2">
+        <img src="./image/logo.png" alt="Logo" class="h-10 w-10"> <!-- Remplacez par votre chemin d'image -->
+        <span class="text-2xl font-semibold text-pink-600">Sweetly <span class="text-gray-600">By You</span></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="hidden sm:flex space-x-8 ml-4">
+        <a href="./homepage.html" class="text-gray-700 hover:text-pink-600 font-medium">Home</a>
+        <a href="#" class="text-gray-700 hover:text-pink-600 font-medium">Build Your Cake</a>
+        <a href="#" class="text-gray-700 hover:text-pink-600 font-medium">Contact</a>
+    </nav>
+
+    <!-- Icônes de notification, favoris, panier et profil -->
+    <div class="hidden sm:flex items-center space-x-6 bg-pink-100 py-2 px-4 rounded-full ml-auto">
+        <a href="#" class="text-gray-700 hover:text-pink-600"><i class="fa-regular fa-bell fa-lg"></i></a>
+        <a href="./Favorites.html" class="text-gray-700 hover:text-pink-600"><i class="fa-regular fa-heart fa-lg"></i></a>
+        <a href="./panier.html" class="text-gray-700 hover:text-pink-600"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+        <a href="#" class="text-gray-700 hover:text-pink-600"><i class="fa-regular fa-user fa-lg"></i></a>
+    </div>
+</header>
+
+
+  <!-- Main Content -->
+  <main class="flex justify-center py-9 px-4 sm:px-8 ">
+    <div class="w-full max-w-7xl p-5 bg-white rounded-lg shadow-lg flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8">
+      <!-- Image Gallery -->
+      <div class="flex flex-col space-y-4 md:w-2/5">
+        <img  src="" alt="Cake" class="cake-image h-auto max-w-lg  rounded-lg">
+      </div>
+
+      <div class="flex-1 md:w-3/5">
+        <div class="flex justify-between items-center">
+          <h2 class="cake-name text-4xl font-bold pt-4 text-gray-800">Nom du gateau</h2>
+          <!-- Image et nom du chef cliquables -->
+          <a href="chef-page.html" class="flex items-center space-x-2">
+            <!-- Le texte n'apparaît que sur la version PC -->
+            <span class="chef-name hidden sm:inline text-gray-700 font-medium text-xl"></span>
+            <!-- Image du chef, alignée -->
+            <img src="chef.png" alt="Chef" class="w-14 h-14 rounded-full">
+          </a>
+        </div>
+        <p class="price text-xl text-pink-500 mt-2">Prix du gâteau</p>
+        <div class="flex items-center mt-2">
+          <span class="rating text-yellow-400 mr-2"></span>
+          <span class="text-gray-500">(4.0)</span>
+        </div>
+        <p class="description text-gray-700 mt-4"></p>
+        <div class="mt-6">
+          <details class="mb-4">
+            <summary class="cursor-pointer text-gray-700 font-medium mb-1">Nutrition & Ingredients</summary>
+            <p class="ingredients text-gray-600 mt-2"></p>
+          </details>
+        </div>
+
+        <!-- Size Selection -->
+        <div class="mt-4">
+          <div class="mt-4 flex justify-between">
+            <label class="text-gray-800 font-semibold">Size:</label>
+            <button onclick="showSizeGuide()" class="text-pink-600 underline font-semibold">Size Guide</button>
+          </div> 
+          <div class="flex items-center space-x-4 mt-2">
+            <!-- Taille S -->
+            <button onclick="selectSize('S')" id="sizeS" class="size-button">S</button>
+            <!-- Taille M -->
+            <button onclick="selectSize('M')" id="sizeM" class="size-button">M</button>
+            <!-- Taille L -->
+            <button onclick="selectSize('L')" id="sizeL" class="size-button">L</button>
+          </div>
+        </div>
+
+        <!-- Quantity Selector -->
+<div class="mt-4 flex items-center space-x-4">
+  <label class="text-gray-800 font-semibold">Quantity:</label>
+  <button id="decrease" onclick="changeQuantity(-1)" class="bg-black text-white p-1 rounded-l-lg  hover:bg-pink-700 transition duration-300 ease-in-out">
+    <span class="text-2xl">−</span>
+  </button>
+  <span id="quantity" class="text-lg font-semibold text-gray-800">1</span>
+  <button id="increase" onclick="changeQuantity(1)" class="bg-black text-white p-1 rounded-r-lg hover:bg-pink-700 transition duration-300 ease-in-out">
+    <span class="text-2xl">+</span>
+  </button>
+</div>
+
+
+        <!-- Add to Cart Button -->
+        <button onclick="addToCart()" class="mt-6 bg-pink-600 text-white px-6 py-2 rounded-lg font-semibold w-full md:w-auto">Add to Cart</button>
+
+        
+      </div>
+    </div>
+  </main>
+
+  <!-- Size Guide Modal -->
+  <div id="sizeGuideModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 hidden flex  items-center justify-center">
+    <div class="bg-white rounded-lg w-11/12 sm:w-3/4 md:w-1/3 p-6 relative">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Size Guide</h2>
+      <p class="text-gray-600 mb-4">Choose the right size for your perfect fit:</p>
+      <ul class="text-gray-700 mb-6">
+        <li><strong>S</strong>: Length - 15 cm, Width - 10 cm</li>
+        <li><strong>M</strong>: Length - 20 cm, Width - 15 cm</li>
+        <li><strong>L</strong>: Length - 25 cm, Width - 20 cm</li>
+      </ul>
+      <button onclick="closeSizeGuide()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-xl">&times;</button>
+      <button onclick="closeSizeGuide()" class="mt-4 w-full bg-pink-600 text-white py-2 rounded-md">Close</button>
+    </div>
+  </div>
+
+  <!-- Notification Modal -->
+  <div id="notificationModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex hidden items-center justify-center">
+    <div class="bg-white rounded-lg w-11/12 sm:w-3/4 md:w-1/3 p-6 relative flex flex-col items-center">
+      <!-- Animation Lottie, sans répétition et centrée -->
+      <dotlottie-player 
+        src="https://lottie.host/0eb8e829-ecdf-4941-8b45-a0e46e36607c/Q4RHJsvVfp.json" 
+        background="transparent" 
+        speed="1" 
+        style="width: 50%; height: 50%;" 
+        autoplay loop>
+      </dotlottie-player>
+      
+      <!-- Texte de confirmation -->
+      <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Item Added!</h2>
+      
+      <!-- Bouton de fermeture -->
+      <button onclick="closeNotification()" class="mt-4 w-full bg-black text-white py-2 rounded-md">Close</button>
+    </div>
+  </div>
+
+    <!-- Avis des clients -->
+    <div class="flex justify-center px-4 sm:px-8 pb-20 lg:pb-0">
+      <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-7xl mx-auto  ">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">Clients Reviews :</h3>
+      <div id="reviews" class="space-y-4">
+        <!-- Review 1 -->
+        <div class="review-item border-b pb-4">
+          <div class="flex items-center space-x-2">
+            <span class="text-gray-700 font-medium">Tahiri Maryem</span>
+            <span class="text-gray-500 text-sm">18/10/2024</span>
+          </div>
+          <div class="flex items-center text-yellow-400">★★★★★</div>
+          <p class="text-gray-600 mt-2">I loved this Violet Teddy Bear Cake! It was not only beautifully crafted but also delicious. The design was perfect for the occasion.</p>
+        </div>
+        <!-- Review 2 -->
+        <div class="review-item border-b pb-4">
+          <div class="flex items-center space-x-2">
+            <span class="text-gray-700 font-medium">Karam Imane</span>
+            <span class="text-gray-500 text-sm">12/09/2024</span>
+          </div>
+          <div class="flex items-center text-yellow-400">★★★★☆</div>
+          <p class="text-gray-600 mt-2">Beautiful cake with a lovely design. The taste was great, but could be a bit softer.</p>
+        </div>
+        <!-- Review 3 -->
+        <div class="review-item border-b pb-4">
+          <div class="flex items-center space-x-2">
+            <span class="text-gray-700 font-medium">Idrissi Youssra</span>
+            <span class="text-gray-500 text-sm">10/09/2024</span>
+          </div>
+          <div class="flex items-center text-yellow-400">★★★★★</div>
+          <p class="text-gray-600 mt-2">This cake exceeded all my expectations! The violet color was gorgeous.</p>
+        </div>
+  
+        <div class="review-item border-b pb-4">
+          <div class="flex items-center space-x-2">
+            <span class="text-gray-700 font-medium">Idrissi Youssra</span>
+            <span class="text-gray-500 text-sm">10/09/2024</span>
+          </div>
+          <div class="flex items-center text-yellow-400">★★★★★</div>
+          <p class="text-gray-600 mt-2">This cake exceeded all my expectations! The violet color was gorgeous.</p>
+        </div>
+      </div>
+      <center>
+        <button id="viewMoreBtn" class="w-32 bg-pink-200 text-pink-600 mt-6 py-2  rounded hover:bg-pink-300 transition">View More</button>
+    </center>
+    </div>
+    
+  </div>
+
+  <footer>
+    <!-- Footer visible uniquement sur les écrans de bureau et plus grands (sm et au-delà) -->
+    <div class="hidden sm:block w-full bg-[url('footer.png')] bg-cover bg-center h-80 bg-no-repeat text-center text-gray-600 text-sm">
+      <p class="pt-52">© 2024 Sweetly By You</p>
+      
+      <nav class="flex justify-center space-x-4 mt-4">
+        <a href="#" class="hover:text-pink-600">Home</a>
+        <a href="#" class="hover:text-pink-600">Personnalisation</a>
+        <a href="#" class="hover:text-pink-600">Contact</a>
+      </nav>
+      
+      <ul class="flex justify-center space-x-4 mt-4 list-none">
+        <li><a href="https://www.facebook.com" aria-label="Facebook"><i class="fab fa-facebook-square fa-2xl"></i></a></li>
+        <li><a href="https://www.twitter.com" aria-label="Twitter"><i class="fab fa-twitter-square fa-2xl"></i></a></li>
+        <li><a href="https://www.instagram.com" aria-label="Instagram"><i class="fab fa-instagram-square fa-2xl"></i></a></li>
+      </ul>
+    </div>
+
+    <!-- Menu fixe en bas visible uniquement sur les écrans mobiles (taille inférieure à sm) -->
+    <div class="fixed bottom-0 left-0 right-0 pt-15 bg-black shadow-lg flex justify-around py-2 sm:hidden">
+      <a href="./homepage.html" class="text-white hover:text-pink-600"><i class="fa-solid fa-house fa-xl"></i></a>
+      <a href="./Favorites.html" class="text-white hover:text-pink-600"><i class="fa-regular fa-heart fa-xl"></i></a>
+      <a href="#" class="text-white hover:text-pink-600"><i class="fa-solid fa-plus fa-xl"></i></a>
+      <a href="./panier.html" class="text-white hover:text-pink-600"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
+      <a href="#" class="text-white hover:text-pink-600"><i class="fa-regular fa-user fa-xl"></i></a>
+    </div>
+  </footer>
+
+
+  <!-- JavaScript -->
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Récupérer l'ID du gâteau sélectionné
+  const selectedCakeId = sessionStorage.getItem("selectedCakeId");
+
+  if (selectedCakeId) {
+    // Récupérer les données complètes des gâteaux depuis le localStorage
+    const cakes = JSON.parse(localStorage.getItem("cakes"));
+    const selectedCake = cakes.find(cake => cake.id === parseInt(selectedCakeId));
+
+    if (selectedCake) {
+      // Afficher les informations du gâteau dans l'interface
+      document.querySelector(".cake-name").textContent = selectedCake.name;
+      document.querySelector(".price").textContent = selectedCake.price;
+      document.querySelector(".cake-image").src = selectedCake.image;
+      document.querySelector(".description").textContent = selectedCake.description;
+      document.querySelector(".chef-name").textContent = selectedCake.chef;
+      document.querySelector(".ingredients").textContent = selectedCake.ingredients;
+      document.querySelector(".rating").textContent = selectedCake.rating;
+    } else {
+      console.error("Gâteau non trouvé");
+    }
+  } else {
+    console.error("Aucun gâteau sélectionné");
+  }
+});
+
+function addToCart() {
+  // Vérifie si un bouton de taille est actif
+  const sizeSelected = document.querySelector('.size-button.active');
+  if (!sizeSelected) {
+    alert("Please select a size before adding to the cart.");
+    return;
+  }
+
+  // Récupérer les informations du gâteau depuis la page (existant dans l'interface)
+  const selectedCakeId = sessionStorage.getItem("selectedCakeId");
+  const cakes = JSON.parse(localStorage.getItem("cakes"));
+  const selectedCake = cakes.find(cake => cake.id === parseInt(selectedCakeId));
+
+  if (!selectedCake) {
+    console.error("Gâteau non trouvé");
+    return;
+  }
+
+  // Récupérer ou initialiser le panier depuis localStorage
+  let cart = JSON.parse(localStorage.getItem("cart"));
+  if (!Array.isArray(cart)) {
+    cart = []; // Initialiser un tableau vide si cart est null ou non un tableau
+  }
+
+  // Ajouter le gâteau au panier avec les détails sélectionnés
+  cart.push({
+    id: selectedCake.id,
+    name: selectedCake.name,
+    price: parseFloat(selectedCake.price.replace(" Dhs", "")), // Conversion du prix en nombre
+    shipping: parseFloat(selectedCake.shipping), // Frais de livraison
+    image: selectedCake.image,
+    size: sizeSelected.textContent, // Taille sélectionnée
+    quantity: quantity // Quantité choisie
+  });
+
+  // Mettre à jour localStorage
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Afficher le modal de notification
+  document.getElementById("notificationModal").classList.remove("hidden");
+}
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const reviews = document.querySelectorAll('.review-item');
+    const viewMoreBtn = document.getElementById('viewMoreBtn');
+    let visibleReviews = 3;
+
+    // Hide reviews beyond the initial three
+    reviews.forEach((review, index) => {
+      if (index >= visibleReviews) review.style.display = 'none';
+    });
+
+    // Show more reviews when clicking "View More"
+    viewMoreBtn.addEventListener('click', () => {
+      reviews.forEach(review => review.style.display = 'block');
+      viewMoreBtn.style.display = 'none'; // Hide the button after showing all reviews
+    });
+  });
+    function selectSize(size) {
+    // Réinitialiser tous les boutons
+    document.querySelectorAll('.size-button').forEach(button => {
+      button.classList.remove('active');
+    });
+    
+    // Activer le bouton sélectionné
+    document.getElementById('size' + size).classList.add('active');
+  }
+    let quantity = 1;
+
+    function changeQuantity(amount) {
+      quantity += amount;
+      if (quantity < 1) quantity = 1;
+      document.getElementById("quantity").textContent = quantity;
+    }
+
+    function showSizeGuide() {
+      document.getElementById("sizeGuideModal").classList.remove("hidden");
+    }
+
+    function closeSizeGuide() {
+      document.getElementById("sizeGuideModal").classList.add("hidden");
+    }
+
+    
+
+
+    function closeNotification() {
+      document.getElementById("notificationModal").classList.add("hidden");
+    }
+
+    
+  </script>
+</body>
+</html>
