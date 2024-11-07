@@ -44,49 +44,91 @@
       <a href="#" class="text-gray-700 hover:text-pink-600"><i class="fa-regular fa-user fa-lg"></i></a>
   </div>
 </header>
-  <section class="container mx-auto w-full mt-4 text-center  " style="overflow: hidden;">
-    <div id="carousel" class="carousel-container active bg-pink-100 p-8 rounded-lg shadow-lg flex items-center justify-center carousel-slide">
-      <img src="https://i.pinimg.com/564x/ec/49/28/ec4928732d8bf1b2276e8b9b8250e0c7.jpg" alt="Raspberry Cheesecake" class="rounded-lg shadow-md h-48 w-48 mr-6 transition-transform duration-300 transform hover:scale-105">
+  <section class="container mx-auto w-full mt-4 flex items-center justify-center" style="overflow: hidden;">
+  <!-- Carousel 1 -->
+  <div id="carousel1" class="carousel-container active bg-cover bg-center p-8 rounded-lg shadow-lg flex items-center justify-center carousel-slide"
+    style="background-image: url('https://img.freepik.com/free-photo/homemade-blackberry-cheesecake-matcha-tea-cake-stand-white-background-berry-dessert-copy-space_127032-2408.jpg?t=st=1730935569~exp=1730939169~hmac=45dfb16c968f5dc597dcd9eb32838cc71a1f97372e8b059e310084778e3eac93&w=740'); width:1120px; height: 250px;">
+    <div class="flex flex-col items-center gap-25">
       <div>
         <h2 class="text-3xl font-semibold text-gray-800 mb-2">Up to 50% <span class="text-pink-500">Raspberry Cheesecake</span></h2>
-        <button class="mt-4 px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg shadow hover:bg-pink-600 transition">Shop now</button>
+        <!-- Bouton "Shop now" -->
+        <button class="shopNowBtn mx-auto mt-4 px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg shadow hover:bg-pink-600 transition flex items-center justify-center">Shop now</button>
       </div>
-       <!-- Carousel Indicators -->
-    <div class="flex gap-2 mt-auto p-0">
-      <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none " onclick="setSlide(0)"></button>
-      <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none " onclick="setSlide(1)"></button>
-      <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none " onclick="setSlide(2)"></button>
+      <div class="absolute gap-2 p-0" style="margin-top:8rem">
+        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none" onclick="setSlide(0)"></button>
+        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none" onclick="setSlide(1)"></button>
+        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none" onclick="setSlide(2)"></button>
+      </div>
     </div>
+  </div>
+
+  <!-- Modal 1 -->
+  <div id="promoModal1" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">Offre Spéciale : -50% sur le Raspberry Cheesecake !</h3>
+      <p class="mt-2 text-gray-600">Savourez notre délicieux cheesecake à la framboise, maintenant avec une réduction exclusive de 50% ! Ne manquez pas cette chance de vous faire plaisir.</p>
+      <a href="/promotions" class="mt-4 px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-600 transition inline-block">Acheter maintenant</a>
+      <button class="closeModalBtn mt-4 px-4 py-2 bg-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-400 transition w-60">Fermer</button>
     </div>
-  
-    <div class="carousel-container bg-pink-100 p-8 rounded-lg shadow-lg flex items-center justify-center carousel-slide" style="display: none;">
-      <img src="https://i.pinimg.com/564x/f0/d2/1f/f0d21f5bec274c9d0b20460d506e02e0.jpg" alt="Chocolate Cake" class="rounded-lg shadow-md h-48 w-48 mr-6 transition-transform duration-300 transform hover:scale-105">
+  </div>
+
+  <!-- Carousel 2 -->
+  <div id="carousel2" class="carousel-container active bg-cover bg-center p-8 rounded-lg shadow-lg flex items-center justify-center carousel-slide"
+    style="background-image: url('https://img.freepik.com/premium-photo/chocolate-cake-served-with-chocolate-sauce_1220-4521.jpg?w=740'); width:1120px; height: 250px;">
+    <div class="flex flex-col items-center gap-25">
       <div>
-        <h2 class="text-3xl font-semibold text-gray-800 mb-2">New Arrival <span class="text-pink-500">Chocolate Cake</span></h2>
-        <button class="mt-4 px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg shadow hover:bg-pink-600 transition">Shop now</button>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-2">New Arrival<span class="text-pink-500">Chocolate Cake</span></h2>
+        <!-- Bouton "Shop now" -->
+        <button class="shopNowBtn mx-auto mt-4 px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg shadow hover:bg-pink-600 transition flex items-center justify-center">Shop now</button>
       </div>
-      <div class="flex gap-2 mt-auto p-0">
-        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none " onclick="setSlide(0)"></button>
-        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none " onclick="setSlide(1)"></button>
-        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none " onclick="setSlide(2)"></button>
+      <div class="absolute gap-2 p-0" style="margin-top:8rem">
+        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none" onclick="setSlide(0)"></button>
+        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none" onclick="setSlide(1)"></button>
+        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none" onclick="setSlide(2)"></button>
       </div>
     </div>
-  
-    <div class="carousel-container bg-pink-100 p-8 rounded-lg shadow-lg flex items-center justify-center carousel-slide" style="display: none;">
-      <img src="https://i.pinimg.com/564x/7f/0d/63/7f0d63fbc095183b6e0be51ad16aa023.jpg" alt="Vanilla Cake" class="rounded-lg shadow-md h-48 w-48 mr-6 transition-transform duration-300 transform hover:scale-105">
+  </div>
+
+  <!-- Modal 2 -->
+  <div id="promoModal2" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">Offre Spéciale : -50% sur le Chocolate Cake !</h3>
+      <p class="mt-2 text-gray-600">Savourez notre délicieux gâteau au chocolat, maintenant avec une réduction exclusive de 50% ! Ne manquez pas cette occasion de vous régaler.</p>
+      <a href="/promotions" class="mt-4 px-6 py-3 bg-brown-500 text-white font-semibold rounded-lg hover:bg-brown-600 transition inline-block">Acheter maintenant</a>
+      <button class="closeModalBtn mt-4 px-6 py-3 bg-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-400 transition w-60">Fermer</button>
+    </div>
+  </div>
+
+  <!-- Carousel 3 -->
+  <div id="carousel3" class="carousel-container active bg-cover bg-center p-8 rounded-lg shadow-lg flex items-center justify-center carousel-slide"
+    style="background-image: url('https://img.freepik.com/premium-photo/portion-homemade-coconut-cake-plate-isolated-home-cooking-concept-closeup_108611-2022.jpg?w=740'); width:1120px; height: 250px;">
+    <div class="flex flex-col items-center gap-25">
       <div>
-        <h2 class="text-3xl font-semibold text-gray-800 mb-2">Special Offer <span class="text-pink-500">Vanilla Cake</span></h2>
-        <button class="mt-4 px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg shadow hover:bg-pink-600 transition">Shop now</button>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-2">Special Offer<span class="text-pink-500">Vanilla Cake</span></h2>
+        <!-- Bouton "Shop now" -->
+        <button class="shopNowBtn mx-auto mt-4 px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg shadow hover:bg-pink-600 transition flex items-center justify-center">Shop now</button>
       </div>
-      <div class="flex gap-2 mt-auto p-0">
-        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none " onclick="setSlide(0)"></button>
-        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none " onclick="setSlide(1)"></button>
-        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none " onclick="setSlide(2)"></button>
+      <div class="absolute gap-2 p-0" style="margin-top:8rem">
+        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none" onclick="setSlide(0)"></button>
+        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none" onclick="setSlide(1)"></button>
+        <button class="w-3 h-3 bg-gray-300 rounded-full focus:outline-none" onclick="setSlide(2)"></button>
       </div>
     </div>
-  
-   
-  </section>
+  </div>
+
+  <!-- Modal 3 -->
+  <div id="promoModal3" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">Offre Spéciale : -50% sur le Vanilla Cake !</h3>
+      <p class="mt-2 text-gray-600">Savourez notre délicieux gâteau à la vanille, maintenant avec une réduction exclusive de 50% ! Ne manquez pas cette chance de vous faire plaisir.</p>
+      <a href="/promotions" class="mt-4 px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-600 transition inline-block">Acheter maintenant</a>
+      <button class="closeModalBtn mt-4 px-6 py-3 bg-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-400 transition w-60 ">Fermer</button>
+    </div>
+  </div>
+
+  <!-- Modal Script -->
+ 
+</section>
 
   <!-- JavaScript for Carousel -->
   <script>
@@ -664,6 +706,81 @@ function filterCakes() {
           <a href="#" class="text-white hover:text-pink-600"><i class="fa-regular fa-user fa-xl"></i></a>
         </div>
       </footer>
+  <script>
+        // Modal handling
+        const shopNowBtns = document.querySelectorAll('.shopNowBtn');
+        const closeModalBtns = document.querySelectorAll('.closeModalBtn');
+        const promoModals = [document.getElementById('promoModal1'), document.getElementById('promoModal2'), document.getElementById('promoModal3')];
+    
+        shopNowBtns.forEach((btn, index) => {
+          btn.addEventListener('click', () => {
+            promoModals[index].classList.remove('hidden');
+          });
+        });
+    
+        closeModalBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            btn.closest('.fixed').classList.add('hidden');
+          });
+        });
+    
+        // Carousel slide function
+        function setSlide(slideIndex) {
+          // Implement the slide logic to change images
+          console.log('Slide changed to:', slideIndex);
+        }
+      </script>
+    
+      <!-- JavaScript for Carousel -->
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.carousel-slide');
+  const totalSlides = slides.length;
+  
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.display = (i === index) ? 'flex' : 'none'; // Affiche seulement la diapositive active
+    });
+  }
+  
+  function setSlide(index) {
+    currentSlide = index;
+    showSlide(currentSlide);
+  }
+  
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+  }
+  
+  // Affiche la première diapositive
+  showSlide(currentSlide);
+  
+  // Change de diapositive toutes les 3 secondes
+  setInterval(nextSlide, 3000);
+  
+ 
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const viewMoreButton = document.getElementById('view-more-button');
+  const extraCards = document.querySelectorAll('.extra-cards');
+  
+  let isShowingMore = false; // Track the toggle state
+
+  viewMoreButton.addEventListener('click', () => {
+    isShowingMore = !isShowingMore; // Toggle the state
+
+    // Show or hide extra cards based on the state
+    extraCards.forEach(card => {
+      card.style.display = isShowingMore ? 'block' : 'none';
+    });
+
+    // Update the button text
+    viewMoreButton.textContent = isShowingMore ? 'View Less' : 'View More';
+  });
+});
+</script>
 
 </body>
 </html>
